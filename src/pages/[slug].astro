@@ -1,10 +1,11 @@
 ---
+import { __DEV__ } from '../constants';
 import BlogLayout from '../layouts/BlogLayout.astro';
 
 export async function getStaticPaths() {
   try {
     const posts = (await Astro.glob('../posts/blog/**/*.md')).filter(
-      (post) => !post.frontmatter.archived
+      (post) => __DEV__ || !post.frontmatter.archived
     );
 
     return posts.map((post) => ({
