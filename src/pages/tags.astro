@@ -1,0 +1,18 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const allTags = (await Astro.glob('../posts/**/*.md'))
+  .map((post) => post.frontmatter.tags)
+  .flat()
+  .filter((tag) => !!tag);
+
+const distinctTags = [...new Set(allTags)];
+---
+
+<SiteLayout><div class="container">WIP</div></SiteLayout>
+
+<style>
+  .container {
+    text-align: center;
+  }
+</style>
